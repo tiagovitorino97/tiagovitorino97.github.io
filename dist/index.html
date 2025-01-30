@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft Armor Set Builder</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-B-YK6FzZ.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DbXn1iIj.css">
+</head>
+
+<body>
+  <div class="page-container">
+    <!-- Header Section -->
+    <header class="header">
+      <h1>Nome para isto</h1>
+
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <main class="container">
+        <!-- Item Selection Section -->
+        <section class="section">
+          <div class="button-grid">
+            <!-- Armor Items -->
+            <button id="helmet" class="item-button">
+              <img class="grid-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAANUlEQVQ4y2NgGJ4gNDT0PzZMtGZy5IhTQEjN4DEAPdCQ+bR1AcWxQBUDcCkkWjOu1Dh48w0AYJ4/wa1cA24AAAAASUVORK5CYII=" alt="Helmet" />
+            </button>
+            <button id="chestplate" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAN0lEQVQ4y2NgGHQgNDT0Pz5MUCOxFmAIkuPSQWQAqYZgVUuxAcQaQjAqh7gBhBQQHdAk5wNKAAAxZUu1bTG8GwAAAABJRU5ErkJggg==" alt="Chestplate" />
+            </button>
+            <button id="leggings" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAALUlEQVQ4y2NgGHQgNDT0Pz5MUDMxFgwhA7D5m2gDiGGPGjBoDcCW7knKD6QCAJIMa5WmTdLCAAAAAElFTkSuQmCC" alt="Leggings" />
+            </button>
+            <button id="boots" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAANklEQVQ4y2NgGH4gNDT0PwzjE8OpmRT2qAF4NBPShGEINlMJ2YoiRtAGQmqQEwq+QCJW3RADAHiLW6VtnlyIAAAAAElFTkSuQmCC" alt="Boots" />
+            </button>
+            <button id="elytra" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAWUlEQVQ4T+WRMQ4AIAgD0T/2lTxSFzHaKEYXBm+jBdKASDSJBQCFtRFVnWZ6YYPWwItYnxZxM2uen9m45dcF41GztJesLu1hb3xKsMVSrNJ4XgdA8RpOfgwV4pcv+R7AL8QAAAAASUVORK5CYII=" alt="Elytra" />
+            </button>
+
+            <!-- Weapon Items -->
+            <button id="sword" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAR0lEQVQ4y2NgIAOEhob+h2GyNGNjk6yZZAOGgGZsoUqSzTBJdJokZ1OkGVccUxTXZGsmyxBsgUiUNwgpJJhpyA4sqmRNIAAAHJNdozdypQ4AAAAASUVORK5CYII=" alt="Sword" />
+            </button>
+            <button id="bow" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAcUlEQVQ4T6WQQRLAIAgDsX/MK3kkPekAjaJ1ZzwYk4iKXNKysAKA+b2qtrLAh1Q1+AHYtKAHfYhN4PcDbwRgfbHzD5WRaYOrsDgDMzIt8Df8ZCEDwKa/XRVU4QEbfzW2h06wfTMrOAkLKzgJB3bfnHkBqb5N5IgkUn8AAAAASUVORK5CYII=" alt="Bow" />
+            </button>
+            <button id="crossbow" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAf0lEQVQ4T5WQUQ7DMAhDk93Rp+SQ2c+o6MNsnaWqsXmmVdb6U5JO9bsaJxYiYks6EbEXFyScUJ45Z96GeZZ06kPuJgK1RGYUl0yZ1TfQZalXNQ7U58bd7BK/zje5JleYYJsLN+4WctbCqUTfslp08BpmbQkBJzL0j/Tkj3+qlt/JG4eV3agG8AAAAABJRU5ErkJggg==" alt="Crossbow" />
+            </button>
+            <button id="shield" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAADFBMVEX///8ZICIAAABVVVXvAVy1AAAAA3RSTlMAAAD6dsTeAAAASUlEQVR42mNYBQQMDcwXmBhW/bFfxdC/MuoTw7ZVq/oYtoKIuatWbYMQa0HE6lWrXkGJLCCx8tbqLIaVtXuzGFaFXwUSq1atAgA2yCiNNcLDCQAAAABJRU5ErkJggg==" alt="Shield" />
+            </button>
+            <button id="trident" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAX0lEQVQ4T+2SQQrAMAgETf+4r/SR9pSyLGolh546Fw04KhKzLwAQAELzESpzfKWSucFiQeFCd1/77e6Pd+2kQ2XdoiRbW2MLF2VNrLsBgODVGb5BSjZpzC8fgOmvKrgBVWJhu3HtS20AAAAASUVORK5CYII=" alt="Trident" />
+            </button>
+            <button id="mace" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAY0lEQVQ4T6WPQRLAIAgDM/1j/v8UeymMYuikdU8aWBHAgOQgOWpuMYtxth9UTSGr2kLXcCyr84YqulniTOvy5G3fLk+iQTWqbKHKzjqJkuJes41Otvgtz1/7LONk8sOFAxkAblU8W6cBVwbrAAAAAElFTkSuQmCC" alt="Mace" />
+            </button>
+
+            <!-- Tool Items -->
+            <button id="pickaxe" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAARUlEQVQ4y2NgGLQgNDT0PzomSTMhQ0l2ATEWEO0qkg2AaSDLEHTN2Awjy2aCBuBSSJQB+BQRNIAYGyjSTJazSUr7dM90AL1UV6lXw1chAAAAAElFTkSuQmCC" alt="Pickaxe" />
+            </button>
+            <button id="shovel" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAANUlEQVQ4y2NgGFIgNDT0PwyTpRkfnyTNJBmASyFFLiBLMzpNf81kRRl9NSOnMPo7G5sr6AYAsaQ7xccQEMgAAAAASUVORK5CYII=" alt="Shovel" />
+            </button>
+            <button id="axe" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAOklEQVQ4y2NgoAcIDQ39D8Jka8bGJlkzyQbgUowuzkSXwKOKV8gKTHTNJEUnNpspcvZw10xxhqEEAAAEej3FXHLK8QAAAABJRU5ErkJggg==" alt="Axe" />
+            </button>
+            <button id="hoe" class="item-button">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4y2NgoCUIDQ39D8NkacbHJ8kFFLuIaq4h2wCYBoqcT5GzRzXTQzPZcUwNAAAJ8kG/lvnyMwAAAABJRU5ErkJggg==" alt="Hoe" />
+            </button>
+          </div>
+        </section>
+
+        <!-- Materials and Enchantments Section -->
+        <section class="section">
+          <!-- Equip Toggle -->
+          <div class="switch-container">
+            <label class="switch">
+              <h6>Equipped</h6>
+              <input type="checkbox" id="equipedCheckbox" disabled />
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- Materials -->
+          <h3>Materials</h3>
+          <div class="material-buttons-container">
+            <h5 id="material-placeholder">Nothing selected.</h5>
+            <h5 id="material-not-applied" hidden>Not compatible</h5>
+            <button class="material-button" id="netherite">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAABzcXNaV1pNSU1IRUhMQUM7OTs8MjIxKSonHB0RERGQLp7qAAAAAXRSTlMAQObYZgAAAGNJREFUeNpjwAFmQijOmaENYO4UZ9MIENfFSEnZpIFhUqipsZKSoAfDVCFl40BBjyyG6YVKgiIV7VkM09IE3Ts60oAiaW4dHWVVCxg4ytw7ylctYGBgaE/vWsUAAhxdC7DbCwDOnxpNtnrV5wAAAABJRU5ErkJggg==" alt="Netherite" class="material-icon" />
+              <span class="netherite">Netherite</span>
+            </button>
+            <button class="material-button" id="diamond">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAIVBMVEUAAAD////V//ah++hK7dks4NggxbUaqqcckZoRcnoUXlN/hNeyAAAAAXRSTlMAQObYZgAAAF1JREFUeNpjwApmzoTQnIJCE8CMiS5GWWABEWNltwVghpCQC4gx0dHFuKwKxHByNm4DM8SMTdpBjEku5eVpXUAGl3taWtkCECM8La0YxGBY4WKcBTaZa9WqBUg2AwByXRcdUQ3W3QAAAABJRU5ErkJggg==" alt="Diamond" class="material-icon" />
+              <span class="diamond">Diamond</span>
+            </button>
+            <button class="material-button" id="gold">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAG1BMVEUAAAD//////eD99V/61krpsRXclhOyZBF1KALSidGuAAAAAXRSTlMAQObYZgAAAFpJREFUeNpjwAHKIRR7uUsBmFtsbGwO4jobGxubNDAUGYOAkgVDibKxsZGSmQdDiZGxknJYGpBhImSalhbiwVBqAqYbGNhDTNNCOxoYGBhKXSM6IOZWNGC3FwCLuxUEBRwUswAAAABJRU5ErkJggg==" alt="Gold" class="material-icon" />
+              <span class="gold">Gold</span>
+            </button>
+            <button class="material-button" id="iron">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAhElEQVQ4y9WSwQnAIBAEbcpefFmEJViNJdmNYQ82OeVUzCdkYfEgzhhinPtNYowNfQWhpRRpSqkdQbXWrqZkBy0lgJAdxDKYRcJTVxIdgmC8949glIxQzllAFLMpoMSCWL33FtDID7gC8QygwPoWKLFeV0MdOF4lJVhDCHto9hMdQZ/nAqzufev6TWmcAAAAAElFTkSuQmCC" alt="Iron" class="material-icon" />
+              <span class="iron">Iron</span>
+            </button>
+            <button class="material-button" id="chainmail">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAPUlEQVQ4y2NgoBVQ1bH9j0yTZYBnQOp/sg0AATuXYPI1w2wn2xCYRorCYIgHIkXOh9k+TGKBooCkOBaIAQAjATE5zBRFTgAAAABJRU5ErkJggg==" alt="Chainmail" class="material-icon" />
+              <span class="chainmail">Chainmail</span>
+            </button>
+            <button class="material-button" id="leather">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAFVBMVEUAAADXa0PGXDWeSSqJOyVUJxY9HBAAIhqkAAAAAXRSTlMAQObYZgAAAF1JREFUeNpjQAahoRCK1VAlAMQMDhIUVjUDMliVDAWVE0AMQ0NhFRCDIdBJyIwBBIKVoIwgZSE1FAars7KySQKIoaSkpAJmKBs7K4MYIWYpbsluQEZYAlsCWxrCCQDKKA6WKugWewAAAABJRU5ErkJggg==" alt="Leather" class="material-icon" />
+              <span class="leather">Leather</span>
+            </button>
+            <button class="material-button" id="stone">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAADFBMVEWPj49/f390dHRoaGhE0tdmAAAAWklEQVR42mNgyNwVyhA5NfwZQ/7qlaEMAa6sWQzTljmoMriGZu9gmMKhFcqwflfUVAZGEdYwhsAAEUaGm+tnZjGEOoayMGS5TX/HwDZt6QqGzNBQBobQKMdUAPkjGLd/XrJ6AAAAAElFTkSuQmCC" alt="Stone" class="material-icon" />
+              <span class="stone">Stone</span>
+            </button>
+            <button class="material-button" id="wood">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAG1BMVEXCnWK4lF+vj1WfhE2WdEF+Yjd0WjZfSitMPSYsJcj4AAAAf0lEQVR42hXJsQ3CMBAF0H/OFxGNfZHoI8gqzMIMjMFCVGwAdQCxgO8EHZKP8NrHY0vhRY3rk8BG62n7aoHpQnzPKtEpxbcAXFksjZ6vQh8+D2StRA0pVjfEQvECFYinqtD0PbX6L2szIGCBBYJLdTsFcCPm4Z5TXbE/SHgp/gPG/zIQFSN2ggAAAABJRU5ErkJggg==" alt="Wood" class="material-icon" />
+              <span class="wood">Wood</span>
+            </button>
+          </div>
+
+          <!-- Leather Armor Color Selector -->
+          <div class="color-dropdown-container" hidden>
+            <h3>Colors</h3>
+            <div class="color-dropdown">
+              <select id="color-selector" disabled>
+                <option value="undyed">Select a color</option>
+                <option value="white">White</option>
+                <option value="orange">Orange</option>
+                <option value="magenta">Magenta</option>
+                <option value="lightBlue">Light Blue</option>
+                <option value="yellow">Yellow</option>
+                <option value="lime">Lime</option>
+                <option value="pink">Pink</option>
+                <option value="gray">Gray</option>
+                <option value="lightGray">Light Gray</option>
+                <option value="cyan">Cyan</option>
+                <option value="purple">Purple</option>
+                <option value="blue">Blue</option>
+                <option value="brown">Brown</option>
+                <option value="green">Green</option>
+                <option value="red">Red</option>
+                <option value="black">Black</option>
+                <!-- Add more colors as needed -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Enchantments -->
+          <h3>Enchantments</h3>
+          <div class="enchantments">
+            <h5 id="enchantment-placeholder">Nothing selected.</h5>
+            <!-- Enchantment buttons will be dynamically shown/hidden -->
+          </div>
+        </section>
+
+        <!-- 3D Model and Stats Section -->
+        <section class="section">
+          <!-- Equip Item Buttons -->
+          <div class="selectEquipedItem">
+            <div class="equipItemButton" id="equip_sword">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAR0lEQVQ4y2NgIAOEhob+h2GyNGNjk6yZZAOGgGZsoUqSzTBJdJokZ1OkGVccUxTXZGsmyxBsgUiUNwgpJJhpyA4sqmRNIAAAHJNdozdypQ4AAAAASUVORK5CYII=" alt="Sword" />
+            </div>
+            <div class="equipItemButton" id="equip_bow">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAcUlEQVQ4T6WQQRLAIAgDsX/MK3kkPekAjaJ1ZzwYk4iKXNKysAKA+b2qtrLAh1Q1+AHYtKAHfYhN4PcDbwRgfbHzD5WRaYOrsDgDMzIt8Df8ZCEDwKa/XRVU4QEbfzW2h06wfTMrOAkLKzgJB3bfnHkBqb5N5IgkUn8AAAAASUVORK5CYII=" alt="Bow" />
+            </div>
+            <div class="equipItemButton" id="equip_crossbow">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAf0lEQVQ4T5WQUQ7DMAhDk93Rp+SQ2c+o6MNsnaWqsXmmVdb6U5JO9bsaJxYiYks6EbEXFyScUJ45Z96GeZZ06kPuJgK1RGYUl0yZ1TfQZalXNQ7U58bd7BK/zje5JleYYJsLN+4WctbCqUTfslp08BpmbQkBJzL0j/Tkj3+qlt/JG4eV3agG8AAAAABJRU5ErkJggg==" alt="Crossbow" />
+            </div>
+            <div class="equipItemButton" id="equip_shield">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAgMAAABinRfyAAAADFBMVEX///8ZICIAAABVVVXvAVy1AAAAA3RSTlMAAAD6dsTeAAAASUlEQVR42mNYBQQMDcwXmBhW/bFfxdC/MuoTw7ZVq/oYtoKIuatWbYMQa0HE6lWrXkGJLCCx8tbqLIaVtXuzGFaFXwUSq1atAgA2yCiNNcLDCQAAAABJRU5ErkJggg==" alt="Shield" />
+            </div>
+            <div class="equipItemButton" id="equip_trident">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAX0lEQVQ4T+2SQQrAMAgETf+4r/SR9pSyLGolh546Fw04KhKzLwAQAELzESpzfKWSucFiQeFCd1/77e6Pd+2kQ2XdoiRbW2MLF2VNrLsBgODVGb5BSjZpzC8fgOmvKrgBVWJhu3HtS20AAAAASUVORK5CYII=" alt="Trident" />
+            </div>
+            <div class="equipItemButton" id="equip_mace">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAGHaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49J++7vycgaWQ9J1c1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCc/Pg0KPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyI+PHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj48cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0idXVpZDpmYWY1YmRkNS1iYTNkLTExZGEtYWQzMS1kMzNkNzUxODJmMWIiIHhtbG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIj48dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPjwvcmRmOkRlc2NyaXB0aW9uPjwvcmRmOlJERj48L3g6eG1wbWV0YT4NCjw/eHBhY2tldCBlbmQ9J3cnPz4slJgLAAAAY0lEQVQ4T6WPQRLAIAgDM/1j/v8UeymMYuikdU8aWBHAgOQgOWpuMYtxth9UTSGr2kLXcCyr84YqulniTOvy5G3fLk+iQTWqbKHKzjqJkuJes41Otvgtz1/7LONk8sOFAxkAblU8W6cBVwbrAAAAAElFTkSuQmCC" alt="Mace" />
+            </div>
+            <div class="equipItemButton" id="equip_pickaxe">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAARUlEQVQ4y2NgGLQgNDT0PzomSTMhQ0l2ATEWEO0qkg2AaSDLEHTN2Awjy2aCBuBSSJQB+BQRNIAYGyjSTJazSUr7dM90AL1UV6lXw1chAAAAAElFTkSuQmCC" alt="Pickaxe" />
+            </div>
+            <div class="equipItemButton" id="equip_shovel">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAANUlEQVQ4y2NgGFIgNDT0PwyTpRkfnyTNJBmASyFFLiBLMzpNf81kRRl9NSOnMPo7G5sr6AYAsaQ7xccQEMgAAAAASUVORK5CYII=" alt="Shovel" />
+            </div>
+            <div class="equipItemButton" id="equip_axe">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAOklEQVQ4y2NgoAcIDQ39D8Jka8bGJlkzyQbgUowuzkSXwKOKV8gKTHTNJEUnNpspcvZw10xxhqEEAAAEej3FXHLK8QAAAABJRU5ErkJggg==" alt="Axe" />
+            </div>
+            <div class="equipItemButton" id="equip_hoe">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAMUlEQVQ4y2NgoCUIDQ39D8NkacbHJ8kFFLuIaq4h2wCYBoqcT5GzRzXTQzPZcUwNAAAJ8kG/lvnyMwAAAABJRU5ErkJggg==" alt="Hoe" />
+            </div>
+          </div>
+
+          <!-- Toggle Button -->
+          <div id="toggle-button-container">
+            <button id="toggle-button">Show Stats</button>
+          </div>
+
+          <!-- 3D Model Container -->
+          <div id="model-container"></div>
+
+          <!-- Stats Content -->
+          <div id="stats-content" style="display:none;">
+            <p>Staaats stats and more stats staaaaaaaats STAAATS!!</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-content">
+        <p>Created by <strong>Tiago Vitorino</strong></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Floating Settings Button -->
+  <button class="settings-button">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAB2AAAAdgB+lymcgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAARGSURBVHic5ZtLaxRBEMd/u0JUvESjYmLiAx8nUTcKHr0IXky8+CHE9yGnxIN+BS/eVMQHRC9GDUh8R4igeFDxlIcQ3Tw2+gli1kP3xCE70zPdUzOzu/6h2Mt01b9qZ7q7qqshO2wH7gEzQDVEZoC7wLYMeWWCLmCecMdXyhzQmQvTlHCb+M57cjMXpilhAfsAVHJhmgLasHfekw1pkyumbQDYmdPYWLANQAE4C4wC34BBoBQxZoc9rWVEBaAbeKC5jAJnNMdUsBoYovY1XQQGDIb7AsbElb4QnQVtczFgzJDmKoo1wHAE2SGgdcW4PcBIxDiTjAC7V+hsJfiP8MswgkGI47wn46hPohd4m8BxvywBb7TOkrYRZ5xIEGyc9xOWcFxCd6IgFIl+1RpBhnCcGM/VAXkpOeMSgHd1QFxK3oY5adoHbIyKUAMh1BdTAL6kQCQvOPnSTfBGo9FkkejdaigG6sCBpNJvcjBqeSiglpETEc/Z4hdQBqa1jU6gA5U5SuIxcBIVCGesJ/7uyyQTwBXgoMFWST8zIWBvnNqtuTNKuO/w5lF7ihYLey3AeezKaH5ZIsF3HwTvNbKVMWBLArubUHmAi+2eBHZr4JLYDKJyiaRYg8r5be2/FrANqHTU9vX/AKyVIoAKwpglhyqwN0px0CrQhqri7NS/x4FjFmQrwH5g1mJMHLQDn7HboT4HngHftUyhVqAadKFK1xWSz77nLAja4qIAvwXta5endDvus+1KmcButrdFCzApxHUO2LYKuA4cESJ4DXghpCsIf1Cl8qMCutYBm0F9qxIRrQIHBIhFoSTI9yeCyhZSdNqPAmoik+C8JHkwMi2oy4Qq8ENKmWQAZgR1RaEspUgyAKmdyKRpSzIA7YK6otAhpUgyAFk1NBSArVLKishtWdsQTkFD0I3csXm5CLwUUgYqbU4bvYK6XoFqSJpDZl2dpHG2wrP48oFO4BYyydCFNDzXuCTArwLcQM8jYemwlwrvwC0dPoD8vqADlQ7bFE796fCU/g1Mh01wKYh8RL4g8t6SQ5UYBZG4cKnLPUCuJPbQwf4bAdvL6HUgUAU+4ZtoHNCB2z9fRbgomqQsXkFVcmzL4pdw6y+sIlwWb0XmYGQSuIrayIShWz8jsdSNow51jIhzNPYI4dcJ+I0qRnhpbSdqWZJujHzCv8/XCZdJ/k/kLQOuzjfT8bjpswuFy9JTrzIY5qQpHd4XFaEGQqgvpgBkVeTMAqGt96YA3EuBSF647zLI6w7J+/tNKs6NkqDaTP/bVlmXIHjN0j2o83mJYCxpXT3k0CxtE4SgdvldNEG7vAfThYl+mvzChN/waVSu/RU1u5q6vgBOBZCMK6cidJdQm5xvqDae02R7QBMLh3EPwKEc+Iqjrq/NZQWXanMmFyezuDcI8NRhzBNxFjmiHXWkHfffn6XJLk+DOoG6gzkQZf1MZtfn/wK5U74U+StUXgAAAABJRU5ErkJggg==" alt="Settings" />
+  </button>
+
+  <!-- Popup Window -->
+  <div class="overlay" id="settings-overlay"></div>
+  <div class="settings-popup" id="settings-popup">
+    <button id="close-settings">x</button>
+    <h2>Settings</h2>
+    <ul class="option-list">
+      <li class="option-item">
+        <span class="option-label">Custom skin</span>
+        <div class="option-control">
+          <input type="text" id="customSkinInput">
+        </div>
+      </li>
+      <li class="option-item">
+        <span class="option-label">Option 2</span>
+      </li>
+      <li class="option-item">
+        <span class="option-label">Option 3</span>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- Scripts -->
+</body>
+
+</html>
