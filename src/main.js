@@ -1,4 +1,4 @@
-import * as THREE from 'three';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.146/build/three.module.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 //import * as ImageJS from 'https://cdn.jsdelivr.net/npm/image-js@latest/dist/image-js.min.js';
@@ -97,7 +97,7 @@ gltfLoader.load('src/assets/models/wide_model.gltf', (gltf) => {
 });
 
 camera.position.set(-0.65, 1.7, -1.50);
-scene.add(new THREE.AmbientLight(0x404040, 25));
+scene.add(new THREE.AmbientLight(0x404040, 3.25));
 
 // Animation loop
 function animate() {
