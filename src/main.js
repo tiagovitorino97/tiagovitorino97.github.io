@@ -1,7 +1,10 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { Image } from 'image-js';
+//import * as ImageJS from 'https://cdn.jsdelivr.net/npm/image-js@latest/dist/image-js.min.js';
+//const Image = ImageJS.default; // Use Image like this
+
+
 
 
 // Constants for reusable values
@@ -149,7 +152,7 @@ function applyTextureToObject(object, texture) {
 }
 
 async function loadAndTransformImage(url) {
-  let image = await Image.load(url);
+  let image = await IJS.Image.load(url);
 
   // Function to load a model and return a promise
   const loadModel = (modelPath) => {
@@ -618,7 +621,7 @@ function closeSettings() {
 // Function to convert a 64x32 texture image to a 64x64 texture
 function Convert6432To6464(image) {
   // Create a new 64x64 image with transparent background
-  const newImage = new Image(64, 64);
+  const newImage = new IJS.Image(64, 64);
 
   // Copy the original 64x32 image to the top half of the new image
   for (let x = 0; x < 64; x++) {
