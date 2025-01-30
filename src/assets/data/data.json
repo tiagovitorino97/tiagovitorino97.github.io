@@ -1,0 +1,303 @@
+{
+  "items": {
+    "pickaxe": {
+      "type": "tools",
+      "enchantments": ["efficiency", "unbreaking", "fortune", "mending", "silk_touch", "curse_of_vanishing"],
+      "materials": ["wood", "stone", "iron", "diamond", "netherite", "gold"],
+      "model": {
+        "rotation": {"x": 5.83, "y": 6.3, "z": 1.6},
+        "position": {"x": 0.38, "y": 1.02, "z": -0.65}
+      }
+    },
+    "axe": {
+      "type": "tools",
+      "enchantments": ["fortune", "silk_touch", "efficiency", "unbreaking", "sharpness", "smite", "bane_of_arthropods", "mending", "curse_of_vanishing"],
+      "materials": ["wood", "stone", "iron", "diamond", "netherite", "gold"],
+      "model": {
+        "rotation": {"x": 5.83, "y": 6.3, "z": 1.6},
+        "position": {"x": 0.38, "y": 1.02, "z": -0.65}
+      }
+    },
+    "shovel": {
+      "type": "tools",
+      "enchantments": ["efficiency", "unbreaking", "fortune", "mending", "silk_touch", "curse_of_vanishing"],
+      "materials": ["wood", "stone", "iron", "diamond", "netherite", "gold"],
+      "model": {
+        "rotation": {"x": 5.83, "y": 6.3, "z": 1.6},
+        "position": {"x": 0.38, "y": 1.02, "z": -0.65}
+      }
+    },
+    "hoe": {
+      "type": "tools",
+      "enchantments": ["efficiency", "unbreaking", "fortune", "mending", "silk_touch", "curse_of_vanishing"],
+      "materials": ["wood", "stone", "iron", "diamond", "netherite", "gold"],
+      "model": {
+        "rotation": {"x": 5.83, "y": 6.3, "z": 1.6},
+        "position": {"x": 0.38, "y": 1.02, "z": -0.65}
+      }
+    },
+    "sword": {
+      "type": "weapons",
+      "enchantments": ["sharpness", "smite", "bane_of_arthropods", "fire_aspect", "knockback", "unbreaking", "mending", "sweeping_edge", "looting", "curse_of_vanishing"],
+      "materials": ["wood", "stone", "iron", "diamond", "netherite", "gold"],
+      "model": {
+        "rotation": {"x": 5.83, "y": 6.3, "z": 1.6},
+        "position": {"x": 0.38, "y": 0.25, "z": -0.8}
+      }
+    },
+    "bow": {
+      "type": "weapons",
+      "enchantments": ["power", "punch", "flame", "unbreaking", "infinity", "mending", "curse_of_vanishing"],
+      "materials": null,
+      "model": {
+        "rotation": {"x": 4.17, "y": 6.24, "z": 1.65},
+        "position": {"x": 0.42, "y": 0.92, "z": -0.06}
+      }
+    },
+    "crossbow": {
+      "type": "weapons",
+      "enchantments": ["quick_charge", "multishot", "piercing", "unbreaking", "mending", "curse_of_vanishing"],
+      "materials": null,
+      "model": {
+        "rotation": {"x": 5.02, "y": 5.5, "z": 3.34},
+        "position": {"x": 0.38, "y": 0.76, "z": -0.31}
+      }
+    },
+    "trident": {
+      "type": "weapons",
+      "enchantments": ["loyalty", "riptide", "channeling", "unbreaking", "mending", "impaling", "curse_of_vanishing"],
+      "materials": null,
+      "model": {
+        "rotation": {"x": 6.5, "y": 6.3, "z": 1.6},
+        "position": {"x": 0.41, "y": 1.2, "z": 0.41}
+      }
+    },
+    "helmet": {
+      "type": "armor",
+      "enchantments": ["protection", "fire_protection", "blast_protection", "projectile_protection", "unbreaking", "mending", "aqua_affinity", "respiration", "thorns", "curse_of_vanishing", "curse_of_binding"],
+      "materials": ["leather", "iron", "diamond", "netherite", "gold", "chainmail"],
+      "model": {
+        "rotation": {"x": 0, "y": 0, "z": 0},
+        "position": {"x": 0, "y": 0, "z": 0}
+      }
+    },
+    "chestplate": {
+      "type": "armor",
+      "enchantments": ["protection", "fire_protection", "blast_protection", "projectile_protection", "unbreaking", "mending", "thorns", "curse_of_vanishing", "curse_of_binding"],
+      "materials": ["leather", "iron", "diamond", "netherite", "gold", "chainmail"],
+      "model": {
+        "rotation": {"x": 0, "y": 0, "z": 0},
+        "position": {"x": 0, "y": 0, "z": 0}
+      }
+    },
+    "leggings": {
+      "type": "armor",
+      "enchantments": ["protection", "fire_protection", "blast_protection", "projectile_protection", "unbreaking", "mending", "thorns", "curse_of_vanishing", "curse_of_binding", "swift_sneak"],
+      "materials": ["leather", "iron", "diamond", "netherite", "gold", "chainmail"],
+      "model": {
+        "rotation": {"x": 0, "y": 0, "z": 0},
+        "position": {"x": 0, "y": 0, "z": 0}
+      }
+    },
+    "boots": {
+      "type": "armor",
+      "enchantments": ["protection", "fire_protection", "blast_protection", "projectile_protection", "unbreaking", "thorns", "depth_strider", "mending", "feather_falling", "soul_speed", "frost_walker", "curse_of_vanishing", "curse_of_binding"],
+      "materials": ["leather", "iron", "diamond", "netherite", "gold", "chainmail"],
+      "model": {
+        "rotation": {"x": 0, "y": 0, "z": 0},
+        "position": {"x": 0, "y": 0, "z": 0}
+      }
+    },
+    "elytra": {
+      "type": "armor",
+      "enchantments": ["unbreaking", "mending", "curse_of_binding", "curse_of_vanishing"],
+      "materials": null,
+      "model": {
+        "rotation": {"x": 6.06, "y": 6.3, "z": 6.3},
+        "position": {"x": -0.87, "y": -0.05, "z": 0.34}
+      }
+    },
+    "shield": {
+      "type": "weapons",
+      "enchantments": ["unbreaking", "mending", "curse_of_vanishing"],
+      "materials": null,
+      "model": {
+        "rotation": {"x": 6.17, "y": 4.71, "z": 1.19},
+        "position": {"x": 0.56, "y": 0.59, "z": 1.63}
+        }
+    },
+    "mace": {
+      "type": "weapons",
+      "enchantments": ["density", "breach", "smite", "bane_of_arthropods", "wind_burst", "fire_aspect", "mending", "unbreaking", "curse_of_vanishing"],
+      "materials": null,
+      "model": {
+        "rotation": {"x": 5.83, "y": 6.3, "z": 1.6},
+        "position": {"x": 0.38, "y": 1.02, "z": -0.45}
+        }
+    }
+  },
+  "enchantments": {
+    "mending": {
+      "levels": 1,
+      "cost": 2
+    },
+    "unbreaking": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "efficiency": {
+      "levels": 5,
+      "cost": [1, 2, 3, 4, 5]
+    },
+    "fortune": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "silk_touch": {
+      "levels": 1,
+      "cost": 4
+    },
+    "protection": {
+      "levels": 4,
+      "cost": [1, 2, 3, 4]
+  },
+    "fire_protection": {
+      "levels": 4,
+      "cost": [1, 2, 3, 4]
+    },
+    "aqua_affinity": {
+      "levels": 1,
+      "cost": 2
+    },
+    "respiration": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "sharpness": {
+      "levels": 5,
+      "cost": [1, 2, 3, 4, 5]
+    },
+    "looting": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "sweeping_edge": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "feather_falling": {
+      "levels": 4,
+      "cost": [1, 2, 3, 4]
+    },
+    "thorns": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "fire_aspect": {
+      "levels": 2,
+      "cost": [1, 2]
+    },
+    "blast_protection": {
+      "levels": 4,
+      "cost": [1, 2, 3, 4]
+    },
+    "projectile_protection": {
+      "levels": 4,
+      "cost": [1, 2, 3, 4]
+    },
+    "smite": {
+      "levels": 5,
+      "cost": [1, 2, 3, 4, 5]
+    },
+    "bane_of_arthropods": {
+      "levels": 5,
+      "cost": [1, 2, 3, 4, 5]
+    },
+    "power": {
+      "levels": 5,
+      "cost": [1, 2, 3, 4, 5]
+    },
+    "punch": {
+      "levels": 2,
+      "cost": [1, 2]
+    },
+    "flame": {
+      "levels": 1,
+      "cost": 2
+    },
+    "infinity": {
+      "levels": 1,
+      "cost": 4 
+    },
+    "quick_charge": {
+      "levels": 3,  
+      "cost": [1, 2, 3]
+    },
+    "multishot": {
+      "levels": 1,
+      "cost": 2
+    },
+    "piercing": {
+      "levels": 4,
+      "cost": [1, 2, 3, 4]
+    },
+    "loyalty": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "riptide": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "channeling": {
+      "levels": 1,
+      "cost": 4
+    },
+    "impaling": {
+      "levels": 5,
+      "cost": [1, 2, 3, 4, 5]
+    },
+    "curse_of_binding": {
+      "levels": 1,
+      "cost": 4
+    },
+    "curse_of_vanishing": {
+      "levels": 1,
+      "cost": 4
+    },
+    "swift_sneak": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "depth_strider": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "frost_walker": {
+      "levels": 2,
+      "cost": [1, 2]
+    },
+    "soul_speed": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "density": {
+      "levels": 5,
+      "cost": [1, 2, 3, 4, 5]
+    },
+    "breach": {
+      "levels": 4,
+      "cost": [1, 2, 3, 4]
+    },
+    "wind_burst": {
+      "levels": 3,
+      "cost": [1, 2, 3]
+    },
+    "knockback": {
+      "levels": 2,
+      "cost": [1, 2]
+    }
+  }
+    
+}
+    

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft Armor Set Builder</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="page-container">
+    <!-- Header Section -->
+    <header class="header">
+      <h1>Nome para isto</h1>
+
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <main class="container">
+        <!-- Item Selection Section -->
+        <section class="section">
+          <div class="button-grid">
+            <!-- Armor Items -->
+            <button id="helmet" class="item-button">
+              <img class="grid-image" src="src/assets/img/armor/helmet/placeholder.png" alt="Helmet" />
+            </button>
+            <button id="chestplate" class="item-button">
+              <img src="src/assets/img/armor/chestplate/placeholder.png" alt="Chestplate" />
+            </button>
+            <button id="leggings" class="item-button">
+              <img src="src/assets/img/armor/leggings/placeholder.png" alt="Leggings" />
+            </button>
+            <button id="boots" class="item-button">
+              <img src="src/assets/img/armor/boots/placeholder.png" alt="Boots" />
+            </button>
+            <button id="elytra" class="item-button">
+              <img src="src/assets/img/armor/elytra/placeholder.png" alt="Elytra" />
+            </button>
+
+            <!-- Weapon Items -->
+            <button id="sword" class="item-button">
+              <img src="src/assets/img/weapons/sword/placeholder.png" alt="Sword" />
+            </button>
+            <button id="bow" class="item-button">
+              <img src="src/assets/img/weapons/bow/placeholder.png" alt="Bow" />
+            </button>
+            <button id="crossbow" class="item-button">
+              <img src="src/assets/img/weapons/crossbow/placeholder.png" alt="Crossbow" />
+            </button>
+            <button id="shield" class="item-button">
+              <img src="src/assets/img/weapons/shield/placeholder.png" alt="Shield" />
+            </button>
+            <button id="trident" class="item-button">
+              <img src="src/assets/img/weapons/trident/placeholder.png" alt="Trident" />
+            </button>
+            <button id="mace" class="item-button">
+              <img src="src/assets/img/weapons/mace/placeholder.png" alt="Mace" />
+            </button>
+
+            <!-- Tool Items -->
+            <button id="pickaxe" class="item-button">
+              <img src="src/assets/img/tools/pickaxe/placeholder.png" alt="Pickaxe" />
+            </button>
+            <button id="shovel" class="item-button">
+              <img src="src/assets/img/tools/shovel/placeholder.png" alt="Shovel" />
+            </button>
+            <button id="axe" class="item-button">
+              <img src="src/assets/img/tools/axe/placeholder.png" alt="Axe" />
+            </button>
+            <button id="hoe" class="item-button">
+              <img src="src/assets/img/tools/hoe/placeholder.png" alt="Hoe" />
+            </button>
+          </div>
+        </section>
+
+        <!-- Materials and Enchantments Section -->
+        <section class="section">
+          <!-- Equip Toggle -->
+          <div class="switch-container">
+            <label class="switch">
+              <h6>Equipped</h6>
+              <input type="checkbox" id="equipedCheckbox" disabled />
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <!-- Materials -->
+          <h3>Materials</h3>
+          <div class="material-buttons-container">
+            <h5 id="material-placeholder">Nothing selected.</h5>
+            <h5 id="material-not-applied" hidden>Not compatible</h5>
+            <button class="material-button" id="netherite">
+              <img src="src/assets/img/material/netherite.png" alt="Netherite" class="material-icon" />
+              <span class="netherite">Netherite</span>
+            </button>
+            <button class="material-button" id="diamond">
+              <img src="src/assets/img/material/diamond.png" alt="Diamond" class="material-icon" />
+              <span class="diamond">Diamond</span>
+            </button>
+            <button class="material-button" id="gold">
+              <img src="src/assets/img/material/gold.png" alt="Gold" class="material-icon" />
+              <span class="gold">Gold</span>
+            </button>
+            <button class="material-button" id="iron">
+              <img src="src/assets/img/material/iron.png" alt="Iron" class="material-icon" />
+              <span class="iron">Iron</span>
+            </button>
+            <button class="material-button" id="chainmail">
+              <img src="src/assets/img/material/chainmail.png" alt="Chainmail" class="material-icon" />
+              <span class="chainmail">Chainmail</span>
+            </button>
+            <button class="material-button" id="leather">
+              <img src="src/assets/img/material/leather.png" alt="Leather" class="material-icon" />
+              <span class="leather">Leather</span>
+            </button>
+            <button class="material-button" id="stone">
+              <img src="src/assets/img/material/stone.png" alt="Stone" class="material-icon" />
+              <span class="stone">Stone</span>
+            </button>
+            <button class="material-button" id="wood">
+              <img src="src/assets/img/material/wood.png" alt="Wood" class="material-icon" />
+              <span class="wood">Wood</span>
+            </button>
+          </div>
+
+          <!-- Leather Armor Color Selector -->
+          <div class="color-dropdown-container" hidden>
+            <h3>Colors</h3>
+            <div class="color-dropdown">
+              <select id="color-selector" disabled>
+                <option value="undyed">Select a color</option>
+                <option value="white">White</option>
+                <option value="orange">Orange</option>
+                <option value="magenta">Magenta</option>
+                <option value="lightBlue">Light Blue</option>
+                <option value="yellow">Yellow</option>
+                <option value="lime">Lime</option>
+                <option value="pink">Pink</option>
+                <option value="gray">Gray</option>
+                <option value="lightGray">Light Gray</option>
+                <option value="cyan">Cyan</option>
+                <option value="purple">Purple</option>
+                <option value="blue">Blue</option>
+                <option value="brown">Brown</option>
+                <option value="green">Green</option>
+                <option value="red">Red</option>
+                <option value="black">Black</option>
+                <!-- Add more colors as needed -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Enchantments -->
+          <h3>Enchantments</h3>
+          <div class="enchantments">
+            <h5 id="enchantment-placeholder">Nothing selected.</h5>
+            <!-- Enchantment buttons will be dynamically shown/hidden -->
+          </div>
+        </section>
+
+        <!-- 3D Model and Stats Section -->
+        <section class="section">
+          <!-- Equip Item Buttons -->
+          <div class="selectEquipedItem">
+            <div class="equipItemButton" id="equip_sword">
+              <img src="src/assets/img/weapons/sword/placeholder.png" alt="Sword" />
+            </div>
+            <div class="equipItemButton" id="equip_bow">
+              <img src="src/assets/img/weapons/bow/placeholder.png" alt="Bow" />
+            </div>
+            <div class="equipItemButton" id="equip_crossbow">
+              <img src="src/assets/img/weapons/crossbow/placeholder.png" alt="Crossbow" />
+            </div>
+            <div class="equipItemButton" id="equip_shield">
+              <img src="src/assets/img/weapons/shield/placeholder.png" alt="Shield" />
+            </div>
+            <div class="equipItemButton" id="equip_trident">
+              <img src="src/assets/img/weapons/trident/placeholder.png" alt="Trident" />
+            </div>
+            <div class="equipItemButton" id="equip_mace">
+              <img src="src/assets/img/weapons/mace/placeholder.png" alt="Mace" />
+            </div>
+            <div class="equipItemButton" id="equip_pickaxe">
+              <img src="src/assets/img/tools/pickaxe/placeholder.png" alt="Pickaxe" />
+            </div>
+            <div class="equipItemButton" id="equip_shovel">
+              <img src="src/assets/img/tools/shovel/placeholder.png" alt="Shovel" />
+            </div>
+            <div class="equipItemButton" id="equip_axe">
+              <img src="src/assets/img/tools/axe/placeholder.png" alt="Axe" />
+            </div>
+            <div class="equipItemButton" id="equip_hoe">
+              <img src="src/assets/img/tools/hoe/placeholder.png" alt="Hoe" />
+            </div>
+          </div>
+
+          <!-- Toggle Button -->
+          <div id="toggle-button-container">
+            <button id="toggle-button">Show Stats</button>
+          </div>
+
+          <!-- 3D Model Container -->
+          <div id="model-container"></div>
+
+          <!-- Stats Content -->
+          <div id="stats-content" style="display:none;">
+            <p>Staaats stats and more stats staaaaaaaats STAAATS!!</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="footer-content">
+        <p>Created by <strong>Tiago Vitorino</strong></p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Floating Settings Button -->
+  <button class="settings-button">
+    <img src="src/assets/img/settings.png" alt="Settings" />
+  </button>
+
+  <!-- Popup Window -->
+  <div class="overlay" id="settings-overlay"></div>
+  <div class="settings-popup" id="settings-popup">
+    <button id="close-settings">x</button>
+    <h2>Settings</h2>
+    <ul class="option-list">
+      <li class="option-item">
+        <span class="option-label">Custom skin</span>
+        <div class="option-control">
+          <input type="text" id="customSkinInput">
+        </div>
+      </li>
+      <li class="option-item">
+        <span class="option-label">Option 2</span>
+      </li>
+      <li class="option-item">
+        <span class="option-label">Option 3</span>
+      </li>
+    </ul>
+
+  </div>
+
+  <!-- Scripts -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
