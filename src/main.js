@@ -279,6 +279,11 @@ customSkinUsername.addEventListener('keydown', (event) => {
   }
 })
 
+// Navigation arrows
+document.querySelectorAll('.nav-arrow').forEach(button => {
+  button.addEventListener('click', () => handleNavButtonClick(button));
+});
+
 
 // ================ Event Handlers ================
 
@@ -874,6 +879,47 @@ function preLoadDocument() {
   document.getElementById('helmet').click();
 }
 
+let currentTitle = 0;
+function handleNavButtonClick(button){
+  const divLeft = document.getElementById('left');
+  const divMiddle = document.getElementById('middle');
+  const divRight = document.getElementById('right');
+  const NAV_TITLES = ['ITEMS','CUSTOMIZATION','PREVIEW'];
+  const leftArrow = document.getElementById('left-arrow');
+  const rightArrow = document.getElementById('right-arrow');
+
+  if(button.id === 'left-arrow' && currentTitle > 0){
+    currentTitle--;
+  }else if(button.id === 'right-arrow' && currentTitle < 2){
+    currentTitle++;
+  }
+
+  if(currentTitle === 0){
+    leftArrow.classList.add('disabled');
+
+    divLeft.style.display = 'block';
+    divMiddle.style.display = 'none';
+    divRight.style.display = 'none';
+  }else if(currentTitle === 1){
+    leftArrow.classList.remove('disabled');
+    rightArrow.classList.remove('disabled');
+
+    divLeft.style.display = 'none';
+    divMiddle.style.display = 'block';
+    divRight.style.display = 'none';
+  }else if(currentTitle === 2){
+    rightArrow.classList.add('disabled');
+
+    divLeft.style.display = 'none';
+    divMiddle.style.display = 'none';
+    divRight.style.display = 'block';
+  }
+
+  document.getElementById('nav-title').textContent = NAV_TITLES[currentTitle];
+}
 
 
 // ================ Zona de testes ================
+
+
+

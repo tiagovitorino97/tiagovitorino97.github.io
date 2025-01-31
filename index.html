@@ -22,7 +22,7 @@
     <div class="main-content">
       <main class="container">
         <!-- Item Selection Section -->
-        <section class="section">
+        <section class="section" id="left">
           <div class="button-grid">
             <!-- Armor Items -->
             <button id="helmet" class="item-button">
@@ -78,7 +78,7 @@
         </section>
 
         <!-- Materials and Enchantments Section -->
-        <section class="section">
+        <section class="section" id="middle">
           <!-- Equip Toggle -->
           <div class="switch-container">
             <label class="switch">
@@ -163,7 +163,7 @@
         </section>
 
         <!-- 3D Model and Stats Section -->
-        <section class="section">
+        <section class="section" id="right">
           <!-- Equip Item Buttons -->
           <div class="selectEquipedItem">
             <div class="equipItemButton" id="equip_sword">
@@ -213,6 +213,11 @@
         </section>
       </main>
     </div>
+    <div class="nav-container" id="nav">
+      <div class="nav-arrow left-arrow disabled" id="left-arrow">&#9665;</div>
+      <div class="nav-title" id="nav-title">Items</div>
+      <div class="nav-arrow right-arrow" id="right-arrow">&#9655;</div>
+  </div>
 
     <!-- Footer Section -->
     <footer>
@@ -227,27 +232,27 @@
     <img src="src/assets/img/settings.png" alt="Settings" />
   </button>
 
-  <!-- Popup Window -->
-  <div class="overlay" id="settings-overlay"></div>
-  <div class="settings-popup" id="settings-popup">
-    <button id="close-settings">x</button>
-    <h2>Settings</h2>
-    <ul class="option-list">
-      <li class="option-item">
-        <span class="option-label">Custom skin</span>
-        <div class="option-control">
-          <input type="text" id="customSkinInput">
-        </div>
-      </li>
-      <li class="option-item">
-        <span class="option-label">Option 2</span>
-      </li>
-      <li class="option-item">
-        <span class="option-label">Option 3</span>
-      </li>
-    </ul>
-
-  </div>
+ <!-- Popup Window -->
+<div class="overlay" id="settings-overlay"></div>
+<div class="settings-popup" id="settings-popup">
+  <button id="close-settings">x</button>
+  <h2>Settings</h2>
+  <ul class="option-list">
+    <li class="option-item">
+      <span class="option-label">Custom skin</span>
+      <div class="option-control">
+        <input type="text" id="customSkinInput">
+      </div>
+    </li>
+    <li class="option-item">
+      <span class="option-label">Option 2</span>
+    </li>
+    <li class="option-item">
+      <span class="option-label">Option 3</span>
+    </li>
+  </ul>
+  <button id="save-settings">Save</button>
+</div>
 
   <!-- Scripts -->
   <script type="importmap">
