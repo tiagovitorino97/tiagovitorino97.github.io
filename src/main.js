@@ -1,6 +1,7 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.146/build/three.module.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { div } from 'three/tsl';
 //import * as ImageJS from 'https://cdn.jsdelivr.net/npm/image-js@latest/dist/image-js.min.js';
 //const Image = ImageJS.default; // Use Image like this
 
@@ -284,6 +285,9 @@ customSkinUsername.addEventListener('keydown', (event) => {
 document.querySelectorAll('.nav-arrow').forEach(button => {
   button.addEventListener('click', () => handleNavButtonClick(button));
 });
+
+// Window resize event listener
+window.addEventListener('resize', handleResize);
 
 
 // ================ Event Handlers ================
@@ -881,11 +885,13 @@ function preLoadDocument() {
 }
 
 let currentTitle = 2;
+const divLeft = document.getElementById('left');
+const divMiddle = document.getElementById('middle');
+const divRight = document.getElementById('right');
+const NAV_TITLES = ['ITEMS','CUSTOMIZATION','PREVIEW'];
+const NAV_TITLES_DIV = [divLeft, divMiddle, divRight];
 function handleNavButtonClick(button){
-  const divLeft = document.getElementById('left');
-  const divMiddle = document.getElementById('middle');
-  const divRight = document.getElementById('right');
-  const NAV_TITLES = ['ITEMS','CUSTOMIZATION','PREVIEW'];
+  
   const leftArrow = document.getElementById('left-arrow');
   const rightArrow = document.getElementById('right-arrow');
 
@@ -895,30 +901,41 @@ function handleNavButtonClick(button){
     currentTitle++;
   }
 
-  if(currentTitle === 0){
-    leftArrow.classList.add('disabled');
-
-    divLeft.style.display = 'block';
-    divMiddle.style.display = 'none';
-    divRight.style.display = 'none';
-  }else if(currentTitle === 1){
-    leftArrow.classList.remove('disabled');
-    rightArrow.classList.remove('disabled');
-
-    divLeft.style.display = 'none';
-    divMiddle.style.display = 'block';
-    divRight.style.display = 'none';
-  }else if(currentTitle === 2){
-    rightArrow.classList.add('disabled');
-
-    divLeft.style.display = 'none';
-    divMiddle.style.display = 'none';
-    divRight.style.display = 'block';
-  }
+  NAV_TITLES_DIV.forEach((div, index) => {
+    if(index === currentTitle){
+      div.style.display = 'block';
+    }else{
+      div.style.display = 'none';
+    }
+    if(currentTitle === 0){
+      leftArrow.classList.add('disabled');
+    }else if(currentTitle === 2){
+      rightArrow.classList.add('disabled');
+    }else{
+      leftArrow.classList.remove('disabled');
+      rightArrow.classList.remove('disabled');
+    }
+  });
 
   document.getElementById('nav-title').textContent = NAV_TITLES[currentTitle];
 }
 
+function handleResize(){
+  if (window.innerWidth > 768){
+    document.getElementById('left').style.display = 'block';
+    document.getElementById('middle').style.display = 'block';
+    document.getElementById('right').style.display = 'block';
+    console.log('window width is greater than 768px')
+  }else{
+    NAV_TITLES_DIV.forEach((div, index) => {
+      if(index === currentTitle){
+        div.style.display = 'block';
+      }else{
+        div.style.display = 'none';
+      }
+    })
+  }
+}
 
 // ================ Zona de testes ================
 
