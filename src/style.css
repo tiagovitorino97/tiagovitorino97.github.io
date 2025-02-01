@@ -124,10 +124,6 @@ button:focus {
     max-width: 100vw;
   }
 
-  .main-content{
-    
-  }
-
   .header{
     height: 7vh;
   }
@@ -143,6 +139,7 @@ button:focus {
   .section {
     width: 95vw;
     height: auto;
+    box-sizing: border-box;
   }
 
   

@@ -1,10 +1,6 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.146/build/three.module.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { div } from 'three/tsl';
-//import * as ImageJS from 'https://cdn.jsdelivr.net/npm/image-js@latest/dist/image-js.min.js';
-//const Image = ImageJS.default; // Use Image like this
-
 
 
 
@@ -270,6 +266,9 @@ document.querySelector('.settings-button').addEventListener('click', openSetting
 // Close settings button
 document.getElementById('close-settings').addEventListener('click', closeSettings);
 
+// Save settings button
+document.getElementById('save-settings').addEventListener('click', saveSettings);
+
 // Overlay click
 document.getElementById('settings-overlay').addEventListener('click', closeSettings);
 
@@ -328,6 +327,10 @@ function handleItemButtonClick(button) {
     itemData.materials.forEach(material => document.getElementById(material).style.display = 'flex');
   } else {
     hideMaterialsNotApplied.hidden = false;
+  }
+
+  if(window.innerWidth <= 768) {
+    document.getElementById('right-arrow').click();    
   }
 
   updateItemDataDisplay();
@@ -477,8 +480,16 @@ function handleLevelButtonClick(event, button) {
 }
 
 function handleEquipItemButtonClick(button) {
+  console.log("é aqui?");
   const itemId = button.id.replace('equip_', '');
-  loadModel(itemId);
+  let material = null;
+
+  if (itemId === 'pickaxe' || itemId === 'shovel' || itemId === 'axe' || itemId === 'hoe') {
+    material = itemData[itemId].material;
+  }
+    
+
+  loadModel(itemId, material);
 }
 
 // ================ Helper Functions ================
@@ -626,6 +637,10 @@ function openSettings() {
 function closeSettings() {
   document.getElementById('settings-overlay').style.display = 'none';
   document.getElementById('settings-popup').style.display = 'none';
+}
+
+function saveSettings() {
+  closeSettings();
 }
 
 // Function to convert a 64x32 texture image to a 64x64 texture
@@ -884,12 +899,14 @@ function preLoadDocument() {
   document.getElementById('helmet').click();
 }
 
+// Navigation
 let currentTitle = 2;
 const divLeft = document.getElementById('left');
 const divMiddle = document.getElementById('middle');
 const divRight = document.getElementById('right');
 const NAV_TITLES = ['ITEMS','CUSTOMIZATION','PREVIEW'];
 const NAV_TITLES_DIV = [divLeft, divMiddle, divRight];
+
 function handleNavButtonClick(button){
   
   const leftArrow = document.getElementById('left-arrow');
