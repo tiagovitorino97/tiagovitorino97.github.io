@@ -879,7 +879,7 @@ function preLoadDocument() {
   document.getElementById('helmet').click();
 }
 
-let currentTitle = 0;
+let currentTitle = 2;
 function handleNavButtonClick(button){
   const divLeft = document.getElementById('left');
   const divMiddle = document.getElementById('middle');

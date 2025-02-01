@@ -96,14 +96,14 @@ button:focus {
 @media (max-width: 768px) {
 
   #left {
-    display: block;
+    display: none;
   }
   #middle {
     display: none;
   }
 
   #right {
-    display: none;
+    display: block;
   }
   
   .container {
