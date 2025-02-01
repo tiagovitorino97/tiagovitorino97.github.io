@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.146/build/three.module.js';
+import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.155/build/three.module.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
@@ -95,7 +95,7 @@ gltfLoader.load('src/assets/models/wide_model.gltf', (gltf) => {
 });
 
 camera.position.set(-0.65, 1.7, -1.50);
-scene.add(new THREE.AmbientLight(0x404040, 3.25));
+scene.add(new THREE.AmbientLight(0x404040, 20));
 
 // Animation loop
 function animate() {
@@ -212,10 +212,10 @@ function loadModel(item, material) {
     else lastLoadedItem = objectToLoad;
 
     if (finalMaterial === 'leather') {
-      applyColorToArmor(objectToLoad,'undyed');
+      applyColorToArmor(objectToLoad, 'undyed');
     }
 
-    
+
 
     scene.add(objectToLoad);
   });
@@ -252,8 +252,11 @@ document.getElementById('color-selector').addEventListener('change', (event) => 
 // Equip checkbox
 document.getElementById('equipedCheckbox').addEventListener('change', handleEquipCheckboxChange);
 
-// Toggle button
+// Toggle Stats/Model button
 document.getElementById('toggle-button').addEventListener('click', toggleStatsAndModel);
+
+// Full screen stats button
+document.getElementById('stats-content-fullscreen').addEventListener('click', toggleFullScreenStats);
 
 // Equip item buttons
 document.querySelectorAll('.equipItemButton').forEach(button => {
@@ -329,8 +332,8 @@ function handleItemButtonClick(button) {
     hideMaterialsNotApplied.hidden = false;
   }
 
-  if(window.innerWidth <= 768) {
-    document.getElementById('right-arrow').click();    
+  if (window.innerWidth <= 768) {
+    document.getElementById('right-arrow').click();
   }
 
   updateItemDataDisplay();
@@ -363,7 +366,7 @@ function handleMaterialButtonClick(button) {
 
   if (button.id === 'leather') {
     document.querySelector('.color-dropdown-container').hidden = false;
-  }else{
+  } else {
     document.querySelector('.color-dropdown-container').hidden = true;
   }
 
@@ -373,14 +376,14 @@ function handleMaterialButtonClick(button) {
 function handleColorChange(event) {
   const color = event.target.value;
   const currentSelectedItem = document.querySelector('.button-grid button.selected');
-  
-  if (currentSelectedItem.id === 'helmet'){
+
+  if (currentSelectedItem.id === 'helmet') {
     applyColorToArmor(lastLoadedHelmet, color);
-  }else if (currentSelectedItem.id === 'chestplate'){
+  } else if (currentSelectedItem.id === 'chestplate') {
     applyColorToArmor(lastLoadedChestplate, color);
-  }else if (currentSelectedItem.id === 'leggings'){
+  } else if (currentSelectedItem.id === 'leggings') {
     applyColorToArmor(lastLoadedLeggings, color);
-  }else if (currentSelectedItem.id === 'boots'){
+  } else if (currentSelectedItem.id === 'boots') {
     applyColorToArmor(lastLoadedBoots, color);
   }
 
@@ -436,7 +439,7 @@ function handleEquipCheckboxChange(event) {
     }
 
     if (currentSelectedMaterial.id === 'leather') colorDropdown.disabled = false;
-    
+
   } else {
     currentSelectedItemImg.src = currentSelectedItemImg.src.replace(/[^/]+$/, `placeholder.png`);
     unloadModel(currentSelectedItem.id);
@@ -454,17 +457,10 @@ function toggleStatsAndModel() {
   const modelContent = document.getElementById('model-container');
   const equipButtonContent = document.querySelector('.selectEquipedItem');
 
-  if (statsContent.style.display === 'none') {
-    statsContent.style.display = 'block';
-    modelContent.style.display = 'none';
-    equipButtonContent.style.display = 'none';
-    this.textContent = 'Show 3D Model';
-  } else {
-    statsContent.style.display = 'none';
-    modelContent.style.display = 'block';
-    equipButtonContent.style.display = 'flex';
-    this.textContent = 'Show Stats';
-  }
+  statsContent.style.display = statsContent.style.display === 'none' ? 'block' : 'none';
+  modelContent.style.display = modelContent.style.display === 'none' ? 'block' : 'none';
+  equipButtonContent.style.display = equipButtonContent.style.display === 'none' ? 'flex' : 'none';
+  this.textContent = statsContent.style.display === 'none' ? 'Show Stats' : 'Show 3D Model';
 }
 
 function handleLevelButtonClick(event, button) {
@@ -487,7 +483,7 @@ function handleEquipItemButtonClick(button) {
   if (itemId === 'pickaxe' || itemId === 'shovel' || itemId === 'axe' || itemId === 'hoe') {
     material = itemData[itemId].material;
   }
-    
+
 
   loadModel(itemId, material);
 }
@@ -904,31 +900,31 @@ let currentTitle = 2;
 const divLeft = document.getElementById('left');
 const divMiddle = document.getElementById('middle');
 const divRight = document.getElementById('right');
-const NAV_TITLES = ['ITEMS','CUSTOMIZATION','PREVIEW'];
+const NAV_TITLES = ['ITEMS', 'CUSTOMIZATION', 'PREVIEW'];
 const NAV_TITLES_DIV = [divLeft, divMiddle, divRight];
 
-function handleNavButtonClick(button){
-  
+function handleNavButtonClick(button) {
+
   const leftArrow = document.getElementById('left-arrow');
   const rightArrow = document.getElementById('right-arrow');
 
-  if(button.id === 'left-arrow' && currentTitle > 0){
+  if (button.id === 'left-arrow' && currentTitle > 0) {
     currentTitle--;
-  }else if(button.id === 'right-arrow' && currentTitle < 2){
+  } else if (button.id === 'right-arrow' && currentTitle < 2) {
     currentTitle++;
   }
 
   NAV_TITLES_DIV.forEach((div, index) => {
-    if(index === currentTitle){
+    if (index === currentTitle) {
       div.style.display = 'block';
-    }else{
+    } else {
       div.style.display = 'none';
     }
-    if(currentTitle === 0){
+    if (currentTitle === 0) {
       leftArrow.classList.add('disabled');
-    }else if(currentTitle === 2){
+    } else if (currentTitle === 2) {
       rightArrow.classList.add('disabled');
-    }else{
+    } else {
       leftArrow.classList.remove('disabled');
       rightArrow.classList.remove('disabled');
     }
@@ -937,22 +933,32 @@ function handleNavButtonClick(button){
   document.getElementById('nav-title').textContent = NAV_TITLES[currentTitle];
 }
 
-function handleResize(){
-  if (window.innerWidth > 768){
+function handleResize() {
+  if (window.innerWidth > 768) {
     document.getElementById('left').style.display = 'block';
     document.getElementById('middle').style.display = 'block';
     document.getElementById('right').style.display = 'block';
     console.log('window width is greater than 768px')
-  }else{
+  } else {
     NAV_TITLES_DIV.forEach((div, index) => {
-      if(index === currentTitle){
+      if (index === currentTitle) {
         div.style.display = 'block';
-      }else{
+      } else {
         div.style.display = 'none';
       }
     })
   }
 }
 
+function toggleFullScreenStats() {
+  const statsContent = document.getElementById("stats-content");
+  const fullscreenIcon = document.getElementById("fullscreen-icon");
+
+  fullscreenIcon.src = statsContent.classList.contains("fullscreen")
+    ? "src/assets/svg/fullscreen-open.svg"
+    : "src/assets/svg/fullscreen-close.svg";
+
+  document.getElementById("stats-content").classList.toggle("fullscreen");
+}
 // ================ Zona de testes ================
 

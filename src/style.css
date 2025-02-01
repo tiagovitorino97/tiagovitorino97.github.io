@@ -110,9 +110,9 @@ button:focus {
     display: block;
   }
   
-  .container {
-    flex-direction: column;
-    align-items: center;
+  #model-container {
+    display: flex;
+    justify-content: center;
   }
 
   html {
@@ -140,6 +140,11 @@ button:focus {
     width: 95vw;
     height: auto;
     box-sizing: border-box;
+    
+  }
+
+  #stats-content-fullscreen{
+    display: none;
   }
 
   
@@ -688,23 +693,27 @@ footer {
 }
 
 /* Minecraft-themed scrollbar */
-.option-list::-webkit-scrollbar {
+.option-list::-webkit-scrollbar,
+#stats-content::-webkit-scrollbar {
   width: 12px; /* Width of the scrollbar */
 }
 
-.option-list::-webkit-scrollbar-track {
+.option-list::-webkit-scrollbar-track,
+#stats-content::-webkit-scrollbar-track {
   background-color: #8B8B8B; /* Minecraft stone-like gray */
   border-radius: 10px;
   border: 2px solid #5A5A5A; /* Darker border for a pixelated look */
 }
 
-.option-list::-webkit-scrollbar-thumb {
+.option-list::-webkit-scrollbar-thumb,
+#stats-content::-webkit-scrollbar-thumb {
   background-color: #6D4C3D; /* Minecraft dirt-like brown */
   border-radius: 10px;
   border: 2px solid #4D3A2F; /* Darker border for depth */
 }
 
-.option-list::-webkit-scrollbar-thumb:hover {
+.option-list::-webkit-scrollbar-thumb:hover,
+#stats-content::-webkit-scrollbar-thumb:hover {
   background-color: #7A5A4A; /* Lighter brown for hover effect */
 }
 
@@ -850,3 +859,47 @@ footer {
   margin: 0 20px;
   text-transform: uppercase;
 }
+
+/* Stats Container */
+#stats-content {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: scale 1s ease-in-out; /* Smooth transition for all properties */
+  min-height: 40px;
+  overflow: auto;
+  height: 60vh;
+  box-sizing: border-box;
+  position: relative; /* Ensure it can be positioned absolutely when enlarged */
+  z-index: 1; /* Ensure it stays on top of other content */
+  transform-origin: center; /* Default transform origin */
+}
+/* Fullscreen Button */
+#stats-content-fullscreen {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 0.5em;
+  padding: 5px 10px; /* Add padding for better touch targets */
+  border-radius: 5px; /* Add border-radius for better appearance */
+}
+
+#stats-content-fullscreen img {
+  width: 20px;
+  height: 20px;
+}
+
+#stats-content.fullscreen {
+  transform: scale(1.2); /* Enlarge by 20% */
+  height: 80vh; /* Increase height */
+  width: 80vw; /* Increase width */
+  transform: translate(-71%, -8%);
+}
+
