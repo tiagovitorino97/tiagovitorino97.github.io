@@ -2,6 +2,9 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.155/build/three.mod
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.155/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.155/examples/jsm/controls/OrbitControls.js';
 
+// Patch the modules to use the CDN version of THREE
+GLTFLoader.prototype.constructor.prototype = THREE;
+OrbitControls.prototype.constructor.prototype = THREE;
 
 
 // Constants for reusable values
