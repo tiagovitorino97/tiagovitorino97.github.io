@@ -1,7 +1,6 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.155/build/three.module.js';
+import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-
 
 // Constants for reusable values
 const MINESKIN_API_URL = 'https://mineskin.eu/skin/';
