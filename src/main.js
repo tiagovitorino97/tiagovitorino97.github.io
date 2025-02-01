@@ -93,6 +93,7 @@ gltfLoader.load('src/assets/models/wide_model.gltf', (gltf) => {
   controls.update();
   controls.maxPolarAngle = Math.PI / 2;
   controls.minPolarAngle = Math.PI / 4;
+  controls.enablePan = false;
   loadSkin('test'); // Load initial skin
 });
 
