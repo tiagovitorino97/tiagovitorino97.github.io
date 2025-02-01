@@ -94,6 +94,18 @@ button:focus {
 }
 
 @media (max-width: 768px) {
+
+  #left {
+    display: block;
+  }
+  #middle {
+    display: none;
+  }
+
+  #right {
+    display: none;
+  }
+  
   .container {
     flex-direction: column;
     align-items: center;
@@ -129,21 +141,14 @@ button:focus {
     height: auto;
   }
 
-  #left {
-    display:block;
-  }
-  #middle {
-    display: none;
-  }
-
-  #right {
-    display: none;
-  }
+  
 }
 
 #model-container {
   width: 100%;
   height: 100%;
+  min-width: 300px; /* Adjust this value as needed */
+  min-height: 620px; /* Adjust this value as needed */
 }
 
 /* ==================== */
@@ -640,6 +645,8 @@ footer {
 /* ==================== */
 
 @media (max-width: 768px) {
+
+  
   .settings-popup {
     width: 90%; /* Make the popup take up 90% of the screen width */
     max-height: 80vh; /* Reduce max-height for smaller screens */

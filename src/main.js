@@ -921,5 +921,3 @@ function handleNavButtonClick(button){
 
 // ================ Zona de testes ================
 
-
-
