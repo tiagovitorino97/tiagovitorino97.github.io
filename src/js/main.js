@@ -1,53 +1,19 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import * as Constants from './constants.js';
+import { add } from 'three/tsl';
 
 // Constants for reusable values
-const MINESKIN_API_URL = 'https://mineskin.eu/skin/';
-const NON_MATERIAL_ITEMS = ['elytra', 'bow', 'crossbow', 'shield', 'trident', 'mace'];
-const NON_LEVEL_ENCHANTMENTS = ['mending', 'silk_touch', 'flame', 'infinity', 'multishot', 'channeling', 'aqua_affinity'];
-const ENCHANTMENT_INCOMPATIBILITIES = {
-  "sharpness": ["smite", "bane_of_arthropods"],
-  "smite": ["sharpness", "bane_of_arthropods"],
-  "bane_of_arthropods": ["sharpness", "smite"],
-  "efficiency": ["silk_touch"],
-  "silk_touch": ["efficiency", "fortune"],
-  "fortune": ["silk_touch"],
-  "power": ["punch"],
-  "punch": ["power"],
-  "mending": ["infinity"],
-  "infinity": ["mending"],
-  "loyalty": ["riptide"],
-  "riptide": ["loyalty", "channeling"],
-  "channeling": ["riptide"],
-  "curse_of_binding": ["curse_of_vanishing"],
-  "curse_of_vanishing": ["curse_of_binding"],
-  "fire_protection": ["blast_protection", "projectile_protection", "protection"],
-  "blast_protection": ["fire_protection", "projectile_protection", "protection"],
-  "projectile_protection": ["fire_protection", "blast_protection", "protection"],
-  "protection": ["fire_protection", "blast_protection", "projectile_protection"],
-  "frost_walker": ["depth_strider"],
-  "depth_strider": ["frost_walker"]
-};
-const MINECRAFT_DYE_COLORS = {
-  undyed: 0xA06540,
-  white: 0xF9FFFE,
-  orange: 0xF9801D,
-  magenta: 0xC74EBD,
-  lightBlue: 0x3AB3DA,
-  yellow: 0xFED83D,
-  lime: 0x80C71F,
-  pink: 0xF38BAA,
-  gray: 0x474F52,
-  lightGray: 0x9D9D97,
-  cyan: 0x169C9C,
-  purple: 0x8932B8,
-  blue: 0x3C44AA,
-  brown: 0x835432,
-  green: 0x5E7C16,
-  red: 0xB02E26,
-  black: 0x1D1D21,
-};
+const MINESKIN_API_URL = Constants.MINESKIN_API_URL;
+const NON_MATERIAL_ITEMS = Constants.NON_MATERIAL_ITEMS;
+const NON_LEVEL_ENCHANTMENTS = Constants.NON_LEVEL_ENCHANTMENTS;
+const ENCHANTMENT_INCOMPATIBILITIES = Constants.ENCHANTMENT_INCOMPATIBILITIES;
+const MINECRAFT_DYE_COLORS = Constants.MINECRAFT_DYE_COLORS;
+const OLD_FORMAT_TO_NEW = Constants.OLD_FORMAT_TO_NEW;
+const OVERLAY_REGIONS = Constants.OVERLAY_REGIONS;
+const NON_VISIBLE = Constants.NON_VISIBLE;
+const enchantedObjects = [];
 
 // Load JSON data and generate enchantment buttons
 let jsonItems, jsonEnchantments;
@@ -98,9 +64,20 @@ scene.add(new THREE.AmbientLight(0x404040, 20));
 // Animation loop
 function animate() {
   requestAnimationFrame(animate);
+
+  Object.entries(enchantedObjects).forEach(([itemType, enchantedObject]) => {
+    if (enchantedObject.isEnchanted) {
+      const speed = 0.0005; // Adjust the speed of the animation
+      enchantedObject.enchantedTexture.offset.x += speed / 6; // Move horizontally
+      enchantedObject.enchantedTexture.offset.y += speed; // Move vertically
+    }
+  });
+  
+  
+
   renderer.render(scene, camera);
 }
-animate();
+
 
 // ================ Load a new skin ================
 async function loadSkin(username) {
@@ -189,6 +166,15 @@ async function loadAndTransformImage(url) {
 // Track loaded models
 let lastLoadedItem, lastLoadedHelmet, lastLoadedChestplate, lastLoadedLeggings, lastLoadedBoots;
 
+// Load enchanted texture
+const textureLoader = new THREE.TextureLoader();
+const enchantedTexture = textureLoader.load('src/assets/img/enchanted.png');
+enchantedTexture.wrapS = THREE.RepeatWrapping;
+enchantedTexture.wrapT = THREE.RepeatWrapping;
+enchantedTexture.magFilter = THREE.LinearFilter;
+enchantedTexture.minFilter = THREE.LinearFilter;
+enchantedTexture.repeat.set(0.35, 0.35); // Zoom in
+
 // Load and unload models
 function loadModel(item, material) {
   const itemData = jsonItems[item];
@@ -210,8 +196,12 @@ function loadModel(item, material) {
     else lastLoadedItem = objectToLoad;
 
     if (finalMaterial === 'leather') {
-      applyColorToArmor(objectToLoad, 'undyed');
+      applyColorToArmor(objectToLoad, document.getElementById('color-selector').value);
     }
+
+    addEnchantedObject(objectToLoad, item);
+    const anyEnchantmentsSelected = document.querySelectorAll('.enchantment.selected').length > 0;
+    toggleEnchantedEffect(item, anyEnchantmentsSelected);
 
 
 
@@ -227,6 +217,40 @@ function unloadModel(item) {
   else scene.remove(lastLoadedItem);
 }
 
+// Example: Add objects to the enchanted state manager
+function addEnchantedObject(object, itemType) {
+  enchantedObjects[itemType] = ({
+    object: object,
+    enchantedTexture: enchantedTexture,
+    isEnchanted: false // Default state
+  });
+}
+
+function toggleEnchantedEffect(itemType, isEnchanted) {
+  const enchantedObject = enchantedObjects[itemType].object;
+  enchantedObjects[itemType].isEnchanted = isEnchanted;
+
+  // Apply or remove the enchanted texture
+  enchantedObject.traverse((child) => {
+    if (child.isMesh) {
+      if (isEnchanted) {
+        child.material.emissiveMap = enchantedTexture;
+        child.material.emissive = new THREE.Color(0xffffff);
+        child.material.emissiveIntensity = 1;
+      } else {
+        child.material.emissiveMap = null;
+        child.material.emissive = new THREE.Color(0x000000);
+        child.material.emissiveIntensity = 0;
+      }
+      child.material.needsUpdate = true;
+    }
+  });
+
+}
+
+
+
+animate();
 // ================ Event Listeners ================
 
 // Item buttons
@@ -346,7 +370,12 @@ function handleMaterialButtonClick(button) {
     currentSelectedItemImg.src = currentSelectedItemImg.src.replace(/[^/]+$/, `placeholder.png`);
     updateItemData();
     unloadModel(document.querySelector('.button-grid button.selected').id);
-    if (button.id === 'leather') document.querySelector('.color-dropdown-container').hidden = true;
+    if (button.id === 'leather') {
+      document.querySelector('.color-dropdown-container').hidden = true;
+      const currentSelectedLeatherColor = document.getElementById('color-selector').value;
+      document.getElementById('color-selector').value = currentSelectedLeatherColor === null ? 'undyed' : currentSelectedLeatherColor;
+      document.getElementById('color-selector').disabled = true;
+    }
     return;
   }
 
@@ -436,7 +465,7 @@ function handleEquipCheckboxChange(event) {
       if (showEquipItemButton) showEquipItemButton.style.display = 'flex';
     }
 
-    if (currentSelectedMaterial.id === 'leather') colorDropdown.disabled = false;
+    if (currentSelectedMaterial?.id === 'leather') colorDropdown.disabled = false;
 
   } else {
     currentSelectedItemImg.src = currentSelectedItemImg.src.replace(/[^/]+$/, `placeholder.png`);
@@ -444,7 +473,7 @@ function handleEquipCheckboxChange(event) {
 
     const showEquipItemButton = document.getElementById(`equip_${currentSelectedItem.id}`);
     if (showEquipItemButton) showEquipItemButton.style.display = 'none';
-    if (currentSelectedMaterial.id === 'leather') colorDropdown.disabled = true;
+    if (currentSelectedMaterial?.id === 'leather') colorDropdown.disabled = true;
   }
 
   updateItemData();
@@ -645,223 +674,64 @@ function Convert6432To6464(image) {
   // Copy the original 64x32 image to the top half of the new image
   for (let x = 0; x < 64; x++) {
     for (let y = 0; y < 32; y++) {
-      const pixel = image.getPixelXY(x, y);
-      newImage.setPixelXY(x, y, pixel);
+      newImage.setPixelXY(x, y, image.getPixelXY(x, y));
     }
   }
 
   // Helper function to copy a region from the old image to the new image
-  function copy(srcX, srcY, width, height, destX, destY, flip = false) {
+  const copy = (srcX, srcY, width, height, destX, destY, flip = false) => {
     for (let x = 0; x < width; x++) {
       for (let y = 0; y < height; y++) {
         const pixel = image.getPixelXY(srcX + x, srcY + y);
-        if (flip) {
-          newImage.setPixelXY(destX + (width - 1 - x), destY + y, pixel);
-        } else {
-          newImage.setPixelXY(destX + x, destY + y, pixel);
-        }
+        newImage.setPixelXY(destX + (flip ? width - 1 - x : x), destY + y, pixel);
       }
     }
-  }
+  };
 
   // Convert old format to new format
-  copy(4, 16, 4, 4, 20, 48, true);  // Top Leg
-  copy(8, 16, 4, 4, 24, 48, true);  // Bottom Leg
-  copy(0, 20, 4, 12, 24, 52, true); // Outer Leg
-  copy(4, 20, 4, 12, 20, 52, true); // Front Leg
-  copy(8, 20, 4, 12, 16, 52, true); // Inner Leg
-  copy(12, 20, 4, 12, 28, 52, true); // Back Leg
-
-  copy(44, 16, 4, 4, 36, 48, true); // Top Arm
-  copy(48, 16, 4, 4, 40, 48, true); // Bottom Arm
-  copy(40, 20, 4, 12, 40, 52, true); // Outer Arm
-  copy(44, 20, 4, 12, 36, 52, true); // Front Arm
-  copy(48, 20, 4, 12, 32, 52, true); // Inner Arm
-  copy(52, 20, 4, 12, 44, 52, true); // Back Arm
+  OLD_FORMAT_TO_NEW.forEach(({ sx, sy, w, h, dx, dy, flip }) => copy(sx, sy, w, h, dx, dy, flip));
 
   clearNonVisible(newImage);
   FixOverlay(newImage);
-
   return newImage;
 }
 
 // Function to check if a region has transparency
-function HasTransparency(image, x, y, width, height) {
+const HasTransparency = (image, x, y, width, height) => {
   for (let i = x; i < x + width; i++) {
     for (let j = y; j < y + height; j++) {
-      const pixel = image.getPixelXY(i, j);
-      if (pixel[3] === 0) return true; // Pixel is transparent
+      if (image.getPixelXY(i, j)[3] === 0) return true;
     }
   }
   return false;
-}
+};
 
 // Function to clear a rectangular region in the image
-function clearRect(image, x, y, width, height) {
+const clearRect = (image, x, y, width, height) => {
   for (let i = x; i < x + width; i++) {
     for (let j = y; j < y + height; j++) {
-      image.setPixelXY(i, j, [0, 0, 0, 0]); // Set pixel to transparent
+      image.setPixelXY(i, j, [0, 0, 0, 0]);
     }
   }
-}
+};
 
-function clearNonVisible(image) {
-  // 64x32 and 64x64 skin parts
-  clearRect(image, 0, 0, 8, 8);
-  clearRect(image, 24, 0, 16, 8);
-  clearRect(image, 56, 0, 8, 8);
-  clearRect(image, 0, 16, 4, 4);
-  clearRect(image, 12, 16, 8, 4);
-  clearRect(image, 36, 16, 8, 4);
-  clearRect(image, 52, 16, 4, 4);
-  clearRect(image, 56, 16, 8, 32);
-  //
-  //// 64x64 skin parts
-  clearRect(image, 0, 32, 4, 4);
-  clearRect(image, 12, 32, 8, 4);
-  clearRect(image, 36, 32, 8, 4);
-  clearRect(image, 52, 32, 4, 4);
-  clearRect(image, 0, 48, 4, 4);
-  clearRect(image, 12, 48, 8, 4);
-  clearRect(image, 28, 48, 8, 4);
-  clearRect(image, 44, 48, 8, 4);
-  clearRect(image, 60, 48, 4, 4);
-}
+const clearNonVisible = (image) => {
+  NON_VISIBLE.forEach(({ x, y, width, height }) => clearRect(image, x, y, width, height));
+};
 
-function FixOverlay(image) {
-  FixHead2(image);
-  FixBody2(image);
-  FixRightArm2(image);
-  FixLeftArm2(image);
-  FixRightLeg2(image);
-  FixLeftLeg2(image);
-}
-
-// Helper function to fix the head overlay
-function FixHead2(image) {
-  // Front
-  if (HasTransparency(image, 40, 8, 8, 8)) return;
-
-  // Top, Bottom, Right, Left, Back
-  if (HasTransparency(image, 40, 0, 8, 8)) return;
-  if (HasTransparency(image, 48, 0, 8, 8)) return;
-  if (HasTransparency(image, 32, 8, 8, 8)) return;
-  if (HasTransparency(image, 48, 8, 8, 8)) return;
-  if (HasTransparency(image, 56, 8, 8, 8)) return;
-
-  // Clear the head overlay area
-  clearRect(image, 40, 0, 8, 8);
-  clearRect(image, 48, 0, 8, 8);
-  clearRect(image, 32, 8, 8, 8);
-  clearRect(image, 40, 8, 8, 8);
-  clearRect(image, 48, 8, 8, 8);
-  clearRect(image, 56, 8, 8, 8);
-}
-
-// Helper function to fix the body overlay
-function FixBody2(image) {
-  // Front
-  if (HasTransparency(image, 20, 36, 8, 12)) return;
-
-  // Top, Bottom, Right, Left, Back
-  if (HasTransparency(image, 20, 32, 8, 4)) return;
-  if (HasTransparency(image, 28, 32, 8, 4)) return;
-  if (HasTransparency(image, 16, 36, 4, 12)) return;
-  if (HasTransparency(image, 28, 36, 4, 12)) return;
-  if (HasTransparency(image, 32, 36, 8, 12)) return;
-
-  // Clear the body overlay area
-  clearRect(image, 20, 32, 8, 4);
-  clearRect(image, 28, 32, 8, 4);
-  clearRect(image, 16, 36, 4, 12);
-  clearRect(image, 20, 36, 8, 12);
-  clearRect(image, 28, 36, 4, 12);
-  clearRect(image, 32, 36, 8, 12);
-}
-
-// Helper function to fix the right arm overlay
-function FixRightArm2(image) {
-  // Front
-  if (HasTransparency(image, 44, 36, 4, 12)) return;
-
-  // Top, Bottom, Right, Left, Back
-  if (HasTransparency(image, 44, 32, 4, 4)) return;
-  if (HasTransparency(image, 48, 32, 4, 4)) return;
-  if (HasTransparency(image, 40, 36, 4, 12)) return;
-  if (HasTransparency(image, 48, 36, 4, 12)) return;
-  if (HasTransparency(image, 52, 36, 4, 12)) return;
-
-  // Clear the right arm overlay area
-  clearRect(image, 44, 32, 4, 4);
-  clearRect(image, 48, 32, 4, 4);
-  clearRect(image, 40, 36, 4, 12);
-  clearRect(image, 44, 36, 4, 12);
-  clearRect(image, 48, 36, 4, 12);
-  clearRect(image, 52, 36, 4, 12);
-}
-
-// Helper function to fix the left arm overlay
-function FixLeftArm2(image) {
-  // Front
-  if (HasTransparency(image, 52, 52, 4, 12)) return;
-
-  // Top, Bottom, Right, Left, Back
-  if (HasTransparency(image, 52, 48, 4, 4)) return;
-  if (HasTransparency(image, 56, 48, 4, 4)) return;
-  if (HasTransparency(image, 48, 52, 4, 12)) return;
-  if (HasTransparency(image, 56, 52, 4, 12)) return;
-  if (HasTransparency(image, 60, 52, 4, 12)) return;
-
-  // Clear the left arm overlay area
-  clearRect(image, 52, 48, 4, 4);
-  clearRect(image, 56, 48, 4, 4);
-  clearRect(image, 48, 52, 4, 12);
-  clearRect(image, 52, 52, 4, 12);
-  clearRect(image, 56, 52, 4, 12);
-  clearRect(image, 60, 52, 4, 12);
-}
-
-// Helper function to fix the right leg overlay
-function FixRightLeg2(image) {
-  // Front
-  if (HasTransparency(image, 4, 36, 4, 12)) return;
-
-  // Top, Bottom, Right, Left, Back
-  if (HasTransparency(image, 4, 32, 4, 4)) return;
-  if (HasTransparency(image, 8, 32, 4, 4)) return;
-  if (HasTransparency(image, 0, 36, 4, 12)) return;
-  if (HasTransparency(image, 8, 36, 4, 12)) return;
-  if (HasTransparency(image, 12, 36, 4, 12)) return;
-
-  // Clear the right leg overlay area
-  clearRect(image, 4, 32, 4, 4);
-  clearRect(image, 8, 32, 4, 4);
-  clearRect(image, 0, 36, 4, 12);
-  clearRect(image, 4, 36, 4, 12);
-  clearRect(image, 8, 36, 4, 12);
-  clearRect(image, 12, 36, 4, 12);
-}
-
-// Helper function to fix the left leg overlay
-function FixLeftLeg2(image) {
-  // Front
-  if (HasTransparency(image, 4, 52, 4, 12)) return;
-
-  // Top, Bottom, Right, Left, Back
-  if (HasTransparency(image, 4, 48, 4, 4)) return;
-  if (HasTransparency(image, 8, 48, 4, 4)) return;
-  if (HasTransparency(image, 0, 52, 4, 12)) return;
-  if (HasTransparency(image, 8, 52, 4, 12)) return;
-  if (HasTransparency(image, 12, 52, 4, 12)) return;
-
-  // Clear the left leg overlay area
-  clearRect(image, 4, 48, 4, 4);
-  clearRect(image, 8, 48, 4, 4);
-  clearRect(image, 0, 52, 4, 12);
-  clearRect(image, 4, 52, 4, 12);
-  clearRect(image, 8, 52, 4, 12);
-  clearRect(image, 12, 52, 4, 12);
-}
+// Function to fix blacked overlay regions
+const FixOverlay = (image) => {
+  OVERLAY_REGIONS.forEach(({ front, top, bottom, right, left, back }) => {
+    if (!HasTransparency(image, front.x, front.y, front.width, front.height)) {
+      [top, bottom, right, left, back].forEach(({ x, y, width, height }) => {
+        if (!HasTransparency(image, x, y, width, height)) {
+          clearRect(image, x, y, width, height);
+        }
+      });
+      clearRect(image, front.x, front.y, front.width, front.height);
+    }
+  });
+};
 
 // Function to trigger a download to be used in the future
 function downloadImage(blob, filename) {
@@ -884,6 +754,27 @@ function applyColorToArmor(object, colorName) {
         material.color = new THREE.Color(MINECRAFT_DYE_COLORS[colorName]);
         material.needsUpdate = true;
       }
+    }
+  });
+}
+
+function applyEnchantedTexture(object, enchantedTexture) {
+  object.traverse((child) => {
+    if (child.isMesh) {
+      const material = child.material;
+
+      // Apply the purple tint to the base color
+      const tintColor = new THREE.Color(0.9, 0.8, 1.0); // Light purple
+      const tintIntensity = 0.9; // Adjust this value to control the strength of the tint
+      material.color.lerp(tintColor, tintIntensity); // Blend the original color with the tint
+
+      // Set the enchanted texture as the emissive map
+      material.emissiveMap = enchantedTexture;
+      material.emissive = new THREE.Color(0xffffff); // Set emissive color to white
+      material.emissiveIntensity = 1; // Adjust the intensity of the glow
+
+      // Ensure the material is updated
+      material.needsUpdate = true;
     }
   });
 }
